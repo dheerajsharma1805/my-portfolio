@@ -152,26 +152,6 @@ const ContactSection = () => {
               <h3 style={contactTitleStyle}>Email</h3>
               <p style={contactValueStyle}>dheerajsharma2709@gmail.com</p>
             </div>
-
-            <div 
-              style={contactItemStyle}
-              onMouseEnter={(e) => e.target.style.transform = 'translateY(-5px)'}
-              onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
-            >
-              <div style={contactIconStyle}>📱</div>
-              <h3 style={contactTitleStyle}>Phone</h3>
-              <p style={contactValueStyle}>+91 (934) 027 5586</p>
-            </div>
-
-            <div 
-              style={contactItemStyle}
-              onMouseEnter={(e) => e.target.style.transform = 'translateY(-5px)'}
-              onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
-            >
-              <div style={contactIconStyle}>📍</div>
-              <h3 style={contactTitleStyle}>Location</h3>
-              <p style={contactValueStyle}>Burhar, Madhya Pradesh, India</p>
-            </div>
           </div>
 
           <div style={socialLinksStyle}>
