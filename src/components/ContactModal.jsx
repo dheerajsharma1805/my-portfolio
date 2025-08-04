@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const ContactModal = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     subject: '',
     message: ''
   })
@@ -21,8 +20,7 @@ const ContactModal = () => {
     // Create mailto link
     const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio')
     const body = encodeURIComponent(
-      `Name: ${formData.name}
-Email: ${formData.email}
+      `My Name is: ${formData.name}
 
 Message:
 ${formData.message}`
@@ -30,7 +28,9 @@ ${formData.message}`
     const mailtoLink = `mailto:dheerajsharma2709@gmail.com?subject=${subject}&body=${body}`
 
     // Open email client
-    window.location.href = mailtoLink
+    // window.location.href = mailtoLink
+    // const mailtoLink = `mailto:dheerajsharma2709@gmail.com`;
+    window.open(mailtoLink, '_self');
 
     // Close modal
     closeModal()
@@ -154,8 +154,8 @@ ${formData.message}`
 
   return (
     <>
-      <div 
-        className="contact-modal" 
+      <div
+        className="contact-modal"
         style={modalStyle}
         onClick={(e) => {
           if (e.target.classList.contains('contact-modal')) {
@@ -166,7 +166,7 @@ ${formData.message}`
         <div style={modalContentStyle}>
           <div style={modalHeaderStyle}>
             <h3 style={modalTitleStyle}>Get In Touch</h3>
-            <button 
+            <button
               style={closeButtonStyle}
               onClick={closeModal}
               onMouseEnter={(e) => e.target.style.color = '#64ffda'}
@@ -192,7 +192,7 @@ ${formData.message}`
               />
             </div>
 
-            <div style={inputGroupStyle}>
+            {/* <div style={inputGroupStyle}>
               <label style={labelStyle} htmlFor="email">Email *</label>
               <input
                 style={inputStyle}
@@ -205,7 +205,7 @@ ${formData.message}`
                 onFocus={(e) => e.target.style.borderColor = '#64ffda'}
                 onBlur={(e) => e.target.style.borderColor = '#333333'}
               />
-            </div>
+            </div> */}
 
             <div style={inputGroupStyle}>
               <label style={labelStyle} htmlFor="subject">Subject</label>
@@ -237,7 +237,7 @@ ${formData.message}`
               />
             </div>
 
-            <button 
+            <button
               type="submit"
               style={submitButtonStyle}
               onMouseEnter={(e) => {
