@@ -32,117 +32,21 @@ const SkillsSection = () => {
     }
   ]
 
-  const sectionStyle = {
-    padding: '4rem 0',
-    background: '#1e1e1e'
-  }
-
-  const containerStyle = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 20px'
-  }
-
-  const headerStyle = {
-    textAlign: 'center',
-    marginBottom: '4rem'
-  }
-
-  const titleStyle = {
-    fontSize: '2.25rem',
-    marginBottom: '1rem'
-  }
-
-  const underlineStyle = {
-    width: '80px',
-    height: '4px',
-    background: 'linear-gradient(135deg, #64ffda 0%, #4fc3f7 100%)',
-    margin: '0 auto',
-    borderRadius: '2px'
-  }
-
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '2rem'
-  }
-
-  const categoryStyle = {
-    background: '#2a2a2a',
-    padding: '2rem',
-    borderRadius: '12px',
-    border: '1px solid #333333',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-  }
-
-  const categoryTitleStyle = {
-    fontSize: '1.25rem',
-    fontWeight: '600',
-    color: '#64ffda',
-    marginBottom: '1.5rem',
-    textAlign: 'center'
-  }
-
-  const skillsGridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-    gap: '0.75rem'
-  }
-
-  const skillTagStyle = {
-    background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(79, 195, 247, 0.1) 100%)',
-    color: '#ffffff',
-    padding: '0.5rem 1rem',
-    borderRadius: '20px',
-    fontSize: '0.875rem',
-    fontWeight: '500',
-    textAlign: 'center',
-    border: '1px solid rgba(100, 255, 218, 0.2)',
-    transition: 'all 0.3s ease',
-    cursor: 'pointer'
-  }
-
   return (
-    <section id="skills" className="section" style={sectionStyle}>
-      <div style={containerStyle}>
-        <div style={headerStyle}>
-          <h2 style={titleStyle}>Technical Skills</h2>
-          <div style={underlineStyle}></div>
+    <section id="skills" className="skills-section">
+      <div className="skills-container">
+        <div className="skills-header">
+          <h2 className="skills-title">Skills & Expertise</h2>
+          <div className="skills-underline"></div>
         </div>
 
-        <div style={gridStyle}>
+        <div className="skills-grid">
           {skillCategories.map((category, index) => (
-            <div 
-              key={index} 
-              style={categoryStyle}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-5px)'
-                e.target.style.boxShadow = '0 8px 25px rgba(100, 255, 218, 0.1)'
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)'
-                e.target.style.boxShadow = 'none'
-              }}
-            >
-              <h3 style={categoryTitleStyle}>{category.title}</h3>
-              <div style={skillsGridStyle}>
+            <div key={index} className="skill-category">
+              <h3 className="category-title">{category.title}</h3>
+              <div className="skills-grid-inner">
                 {category.skills.map((skill, skillIndex) => (
-                  <span 
-                    key={skillIndex} 
-                    style={skillTagStyle}
-                    onMouseEnter={(e) => {
-                      e.target.style.background = 'linear-gradient(135deg, rgba(100, 255, 218, 0.2) 0%, rgba(79, 195, 247, 0.2) 100%)'
-                      e.target.style.borderColor = 'rgba(100, 255, 218, 0.5)'
-                      e.target.style.transform = 'scale(1.05)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.background = 'linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(79, 195, 247, 0.1) 100%)'
-                      e.target.style.borderColor = 'rgba(100, 255, 218, 0.2)'
-                      e.target.style.transform = 'scale(1)'
-                    }}
-                  >
-                    {skill}
-                  </span>
+                  <span key={skillIndex} className="skill-tag">{skill}</span>
                 ))}
               </div>
             </div>
@@ -151,30 +55,255 @@ const SkillsSection = () => {
       </div>
 
       <style jsx>{`
-        @media (max-width: 768px) {
+        .skills-section {
+          padding: 4rem 0;
+          background: #1e1e1e;
+        }
+
+        .skills-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .skills-header {
+          text-align: center;
+          margin-bottom: 4rem;
+        }
+
+        .skills-title {
+          font-size: 2.25rem;
+          margin-bottom: 1rem;
+          color: #ffffff;
+        }
+
+        .skills-underline {
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(135deg, #64ffda 0%, #4fc3f7 100%);
+          margin: 0 auto;
+          border-radius: 2px;
+        }
+
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+        }
+
+        .skill-category {
+          background: #2a2a2a;
+          padding: 2rem;
+          border-radius: 12px;
+          border: 1px solid #333333;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+        }
+
+        .category-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #64ffda;
+          margin-bottom: 1.5rem;
+          text-align: center;
+        }
+
+        .skills-grid-inner {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: 0.75rem;
+        }
+
+        .skill-tag {
+          background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(79, 195, 247, 0.1) 100%);
+          color: #ffffff;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.875rem;
+          font-weight: 500;
+          text-align: center;
+          border: 1px solid rgba(100, 255, 218, 0.2);
+          transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+          background: linear-gradient(135deg, rgba(100, 255, 218, 0.2) 0%, rgba(79, 195, 247, 0.2) 100%);
+          border-color: rgba(100, 255, 218, 0.4);
+          transform: translateY(-2px);
+        }
+
+        /* Tablet Responsive */
+        @media (max-width: 1024px) {
           .skills-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1.5rem !important;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
           }
 
-          .skills-category {
-            padding: 1.5rem !important;
+          .skill-category {
+            padding: 1.75rem;
           }
 
-          .skills-tags {
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
-            gap: 0.5rem !important;
+          .skills-title {
+            font-size: 2rem;
+          }
+
+          .category-title {
+            font-size: 1.125rem;
+          }
+
+          .skills-grid-inner {
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 0.6rem;
+          }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+          .skills-section {
+            padding: 3rem 0;
+          }
+
+          .skills-container {
+            padding: 0 15px;
+          }
+
+          .skills-header {
+            margin-bottom: 3rem;
+          }
+
+          .skills-title {
+            font-size: 1.75rem;
+          }
+
+          .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+
+          .skill-category {
+            padding: 1.5rem;
+          }
+
+          .category-title {
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+          }
+
+          .skills-grid-inner {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.5rem;
+          }
+
+          .skill-tag {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
           }
         }
 
         @media (max-width: 480px) {
-          .skills-tags {
-            grid-template-columns: 1fr 1fr !important;
+          .skills-section {
+            padding: 2rem 0;
+          }
+
+          .skills-container {
+            padding: 0 10px;
+          }
+
+          .skills-header {
+            margin-bottom: 2rem;
+          }
+
+          .skills-title {
+            font-size: 1.5rem;
+          }
+
+          .skills-grid {
+            gap: 1.25rem;
+          }
+
+          .skill-category {
+            padding: 1.25rem;
+          }
+
+          .category-title {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          .skills-grid-inner {
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 0.4rem;
           }
 
           .skill-tag {
-            padding: 0.4rem 0.8rem !important;
-            font-size: 0.8rem !important;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 15px;
+          }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 360px) {
+          .skills-grid-inner {
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 0.3rem;
+          }
+
+          .skill-tag {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+          }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+          .skill-category {
+            transform: none;
+          }
+
+          .skill-category:active {
+            transform: translateY(-2px);
+          }
+
+          .skill-tag {
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .skill-tag:active {
+            transform: translateY(-1px);
+          }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-height: 500px) and (orientation: landscape) {
+          .skills-section {
+            padding: 2rem 0;
+          }
+
+          .skills-header {
+            margin-bottom: 2rem;
+          }
+
+          .skills-grid {
+            gap: 1.25rem;
+          }
+
+          .skill-category {
+            padding: 1.25rem;
+          }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+          .skill-tag {
+            border-width: 0.5px;
           }
         }
       `}</style>

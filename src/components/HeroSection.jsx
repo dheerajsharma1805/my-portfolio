@@ -31,10 +31,9 @@ const HeroSection = () => {
   }, [])
 
   const handleGetInTouch = () => {
-    const modal = document.querySelector('.contact-modal')
-    if (modal) {
-      modal.classList.add('active')
-    }
+    // Dispatch custom event to open contact modal
+    const event = new CustomEvent('openContactModal')
+    document.dispatchEvent(event)
   }
 
   const sectionStyle = {
